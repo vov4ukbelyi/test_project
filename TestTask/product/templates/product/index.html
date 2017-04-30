@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'product/base.html' %}
 
-</body>
-</html>
+{% block title %}HomePage{% endblock %}
+
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row col-sm-offset-5 col-sm-7">
+     <div class="well">
+        <h4>Welcome to home page.</h4>
+         <p>Make your choice:
+             <a href="{% url 'product:categories' %}">Categories</a>
+             or <a href="{% url 'products:all_products' %}">Products are added within 24 hours</a>.
+             <br>
+             <br>
+             <br>
+             {% if user.is_authenticated %}
+             You Log in. You can visit Products 24h.
+             {% else %}
+             (But if you want see page with products, you must
+             <a href="{% url 'account_login' %}">Log in</a> account or
+             <a href="{% url 'account_signup' %}">Register</a> new)
+             {% endif %}
+         </p>
+     </div>
+  </div>
+</div>
+{% endblock %}

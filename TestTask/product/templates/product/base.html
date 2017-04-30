@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Site{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'product/style.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="{% url 'product:index' %}">
+                    <span class="navbar-brand glyphicon glyphicon-home" ></span>
+                </a>
+            </div>
+
+            <!-- Items -->
+            <div class="collapse navbar-collapse" id="topNavBar">
+                <ul class="nav navbar-nav">
+
+                    <li class="">
+                        <a href="{% url 'product:categories' %}">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp; Categories
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{% url 'product:all_products' %}">
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>&nbsp; Products24h
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="">
+                        <a style="color: white">{{ user.get_username }}</a>
+                    <li class="">
+
+                            <a href="{% url 'account_logout' %}">
+                                <span class="glyphicon glyphicon-log-in " aria-hidden="true"></span>&nbsp; Log Out
+                            </a>
+
+                    {% else %}
+                    <li class="">
+                        <a href="{% url 'account_signup' %}">
+                            <span class="" aria-hidden="true"></span>Registration
+                        </a>
+                    <li class="">
+                        <a href="{% url 'account_login' %}">
+                             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; LogIn
+                        </a>
+                    {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container main-content" style="margin-left:50px; margin-top: 50px">
+        {% block body %}
+        {% endblock %}
+    </div>
+</body>
+</html>

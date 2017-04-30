@@ -1,5 +1,6 @@
 from django.views import generic
 from .models import Category, Product
+from datetime import datetime, timedelta
 
 class IndexView(generic.ListView):
     template_name = 'product/index.html'
@@ -23,3 +24,11 @@ class AboutView(generic.DetailView):
     model = Product
     template_name = 'product/about.html'
     slug_url_kwarg = 'product_slug'
+
+class ProductsView(generic.ListView):
+    template_name = 'product/products24h.html'
+    context_object_name = 'products_list'
+
+    def get_queryset(self):
+        how_many_days = 1
+        return Product.objects.filter(created_at__gte=datetime.now()-timedelta(how_many_days))

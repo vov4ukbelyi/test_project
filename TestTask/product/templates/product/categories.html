@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'product/base.html' %}
 
-</body>
-</html>
+
+{% block title %}
+Categories
+{% endblock %}
+
+{% block body %}
+{% if category_list %}
+
+    {% for category in category_list %}
+        <h4><a href="{% url 'product:detail' category.slug %}">{{ category.name }}</a></h4>
+        <p>Slug: {{category.slug}}</p>
+        <p>Description:</p>
+        <pre>{{category.description}}</pre>
+        <br>
+    {% endfor %}
+
+{% else %}
+    <p>No category are available.</p>
+{% endif %}
+{% endblock %}

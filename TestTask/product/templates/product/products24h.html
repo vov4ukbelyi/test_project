@@ -1,0 +1,26 @@
+{% extends 'product/base.html' %}
+
+{% block title %}
+Products24h
+{% endblock %}
+
+
+{% block body %}
+    {% if user.is_authenticated %}
+            {% if products_list %}
+
+                {% for product in products_list %}
+                    <h4>{{ product.name }}</a></h4>
+                    <p>Slug: {{product.slug}}</p>
+                    <p>Description: </p>
+                    <pre>{{product.description}}</pre>
+                    <br>
+                {% endfor %}
+
+            {% else %}
+                <p>No products are available.</p>
+            {% endif %}
+    {% else %}
+        <h4>Welcome, user. Please <a href="{% url 'account_login' %}">Log In</a> to this page.</h4>
+     {% endif %}
+{% endblock %}

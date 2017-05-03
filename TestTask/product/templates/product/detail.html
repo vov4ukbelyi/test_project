@@ -6,11 +6,13 @@ Products
 {% endblock %}
 
 {% block body %}
-    {% for product in category.product_set.all %}
-        <h4><a href="{% url 'product:about' category.slug product.slug %}">{{ product.name}}</a></h4>
-        <p>Description:
-        <pre>{{product.description}}</pre>
-        <p>Price: {{product.price}}</p>
-        <br>
-    {% endfor %}
+
+        {% for product in category.product_set.all %}
+            <h4><a href="{% url 'product:about' category.slug product.slug %}">{{ product.name}}</a></h4>
+            <p>Description:
+            <pre>{{product.description}}</pre>
+            <p>Price: {{product.price}}</p>
+            <br>
+        {% endfor %}
+
 {% endblock %}

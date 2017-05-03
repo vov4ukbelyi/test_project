@@ -25,9 +25,9 @@ class AboutView(generic.DetailView):
     template_name = 'product/about.html'
     slug_url_kwarg = 'product_slug'
 
-class ProductsView(generic.ListView):
+class Products24hView(generic.ListView):
     template_name = 'product/products24h.html'
-    context_object_name = 'products_list'
+    context_object_name = 'products24h_list'
 
     def get_queryset(self):
         how_many_days = 1

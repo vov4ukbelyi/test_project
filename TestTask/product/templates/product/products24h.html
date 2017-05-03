@@ -7,10 +7,10 @@ Products24h
 
 {% block body %}
     {% if user.is_authenticated %}
-            {% if products_list %}
+            {% if products24h_list %}
 
-                {% for product in products_list %}
-                    <h4>{{ product.name }}</a></h4>
+                {% for product in products24h_list %}
+                    <h4>{{ product.name }}</h4>
                     <p>Slug: {{product.slug}}</p>
                     <p>Description: </p>
                     <pre>{{product.description}}</pre>

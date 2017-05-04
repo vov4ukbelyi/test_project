@@ -18,7 +18,3 @@ After cloning this repository to your local folder, you can use vagrant for test
 - using default dev settings ```python3 manage.py runserver 0.0.0.0:8000```
 - or exactly with dev settings ```python3 manage.py runserver 0.0.0.0:8000 --settings=TestTask.settings.local```
 - or with production settings ```python3 manage.py runserver 0.0.0.0:8000 --settings=TestTask.settings.production --insecure``
-<<<<<<< HEAD
-
-=======
->>>>>>> 6df2baf7cec74e7255325082352cb85db70eb85a
